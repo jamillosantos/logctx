@@ -28,3 +28,8 @@ func WithLogger(ctx context.Context, logger *zap.Logger) context.Context {
 func WithFields(ctx context.Context, fields ...zap.Field) context.Context {
 	return WithLogger(ctx, From(ctx).With(fields...))
 }
+
+// WithFields returns a new context with the logger that includes the given fields.
+func WithFields(ctx context.Context, fields ...zap.Field) context.Context {
+	return WithLogger(ctx, From(ctx).With(fields...))
+}
