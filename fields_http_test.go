@@ -3,7 +3,7 @@
 package logctx
 
 import (
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 	"testing"
@@ -31,7 +31,7 @@ func Test_httpResponseMarshaler_MarshalLogObject(t *testing.T) {
 			Status:        wantHttpStatusText,
 			StatusCode:    wantHttpStatus,
 			ContentLength: wantContentLength,
-			Body:          ioutil.NopCloser(strings.NewReader(wantBodyBytes)),
+			Body:          io.NopCloser(strings.NewReader(wantBodyBytes)),
 		})
 		assert.Equal(t, zapcore.ObjectMarshalerType, field.Type)
 		require.IsType(t, httpResponseMarshaler{}, field.Interface)
@@ -61,7 +61,7 @@ func Test_httpResponseMarshaler_MarshalLogObject(t *testing.T) {
 			Status:        wantHttpStatusText,
 			StatusCode:    wantHttpStatus,
 			ContentLength: wantContentLength,
-			Body:          ioutil.NopCloser(strings.NewReader(wantBodyBytes)),
+			Body:          io.NopCloser(strings.NewReader(wantBodyBytes)),
 		})
 		assert.Equal(t, zapcore.ObjectMarshalerType, field.Type)
 		require.IsType(t, httpResponseMarshaler{}, field.Interface)
@@ -87,7 +87,7 @@ func Test_httpResponseMarshaler_MarshalLogObject(t *testing.T) {
 			Status:        wantHttpStatusText,
 			StatusCode:    wantHttpStatus,
 			ContentLength: wantContentLength,
-			Body:          ioutil.NopCloser(strings.NewReader(wantBodyBytes)),
+			Body:          io.NopCloser(strings.NewReader(wantBodyBytes)),
 		})
 		assert.Equal(t, zapcore.ObjectMarshalerType, field.Type)
 		require.IsType(t, httpResponseMarshaler{}, field.Interface)
@@ -112,7 +112,7 @@ func Test_httpResponseMarshaler_MarshalLogObject(t *testing.T) {
 			Status:        wantHttpStatusText,
 			StatusCode:    wantHttpStatus,
 			ContentLength: wantContentLength,
-			Body:          ioutil.NopCloser(strings.NewReader(wantBodyBytes)),
+			Body:          io.NopCloser(strings.NewReader(wantBodyBytes)),
 		}, HttpResponseOptions{
 			SkipBody: true,
 		})

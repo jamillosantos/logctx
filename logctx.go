@@ -29,7 +29,32 @@ func WithFields(ctx context.Context, fields ...zap.Field) context.Context {
 	return WithLogger(ctx, From(ctx).With(fields...))
 }
 
-// WithFields returns a new context with the logger that includes the given fields.
-func WithFields(ctx context.Context, fields ...zap.Field) context.Context {
-	return WithLogger(ctx, From(ctx).With(fields...))
+// Error is a helper function to log an error with the given context.
+func Error(ctx context.Context, msg string, fields ...zap.Field) {
+	From(ctx).Error(msg, fields...)
+}
+
+// Info is a helper function to log an info with the given context.
+func Info(ctx context.Context, msg string, fields ...zap.Field) {
+	From(ctx).Info(msg, fields...)
+}
+
+// Debug is a helper function to log a debug with the given context.
+func Debug(ctx context.Context, msg string, fields ...zap.Field) {
+	From(ctx).Debug(msg, fields...)
+}
+
+// Warn is a helper function to log a warning with the given context.
+func Warn(ctx context.Context, msg string, fields ...zap.Field) {
+	From(ctx).Warn(msg, fields...)
+}
+
+// Fatal is a helper function to log a fatal with the given context.
+func Fatal(ctx context.Context, msg string, fields ...zap.Field) {
+	From(ctx).Fatal(msg, fields...)
+}
+
+// Panic is a helper function to log a panic with the given context.
+func Panic(ctx context.Context, msg string, fields ...zap.Field) {
+	From(ctx).Panic(msg, fields...)
 }
